@@ -112,9 +112,7 @@ impl FromStr for Token {
             && parts.next().is_none();
 
         if is_valid {
-            Ok(Self(SecretString::new(Arc::from(
-                aformat!("Bot {}", CapStr::<128>(token)).as_str(),
-            ))))
+            Ok(Self(SecretString::new(Arc::from(token))))
         } else {
             Err(TokenError::InvalidToken)
         }
